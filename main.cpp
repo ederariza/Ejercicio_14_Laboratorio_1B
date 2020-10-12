@@ -10,40 +10,47 @@ Nota: la salida del programa debe ser: 143*777=111111
 #include <iostream>
 using namespace std;
 
+//Prototipo funcion palindromo
 bool numeroPalindromo(int numero);
 
-int main(){
+int main(void){
 
-    int numero_i = 0;
-    int numero_j = 0;
-    int numero_mayor = 0;
-    int numero_palindromo;
-    int producto_ixj;
+    int numero_i = 0; //Primer numero de tres cifras
+    int numero_j = 0; //Segundo numero de tres cifras
+    int numero_mayor = 0; //Numero palindromo mayor
+    int numero_palindromo; //Numero palindromo
+    int producto_ixj; //Producto de numeros de tres cifras
 
+    //Ciclo for que me pedmite hallar numeros palindromo del producto de numero de tres cifras
     for (int i = 100; i <= 999; i++){
 
         for (int j = 100; j <= 999; j++){
             producto_ixj = (i * j);
 
+            //Encontramos los numeros palindromos
             if (numeroPalindromo(producto_ixj)){
                     numero_palindromo = producto_ixj;
                     //cout << i << " x " << j << " = " << numero_palindromo << endl;
 
+                    //Hallamos el numero palindromo mas grande
                     if (numero_mayor < numero_palindromo)
                         numero_mayor = numero_palindromo;
 
+                    //Encontramos los numeros del numero palindromo mas grande
                     if (numero_palindromo == 906609)
                         numero_i = i,
                         numero_j = j;
             }
         }
     }
+
     cout << "El numero palindromo mas grande al multiplicar numeros de tres cifras es: \n" << numero_j << " x " << numero_i << " = " << numero_mayor << endl;
+
     return 0;
 
 }
 
-
+//Funcion numero palindromo encuentra numeros palindromos
 bool numeroPalindromo(int numero){
 
         //int numero;
